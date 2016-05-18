@@ -5,6 +5,7 @@ issues:
 
 doesn't download videos (only thumbnails)
 can't download older pictures
+probably many others
 
 '''
 
@@ -27,7 +28,7 @@ html = bytes.decode(html) #retrieve html and decode to string
 
 count = 0
 
-while (html.find('display_src":"https') != -1):
+while (html.find('display_src":"https') != -1): #parse through the html to find links to the image resources and download them 
 	start = html.find('display_src":"https')
 	start += 14 #now start points to h in https
 	html = html[start:] #cut everything before the first link
@@ -40,7 +41,3 @@ while (html.find('display_src":"https') != -1):
 	urllib.request.urlretrieve(resource,file_name)
 	count += 1
 	html = html[end:]
-
-#print(html)
-
-# a[start:end+5]
